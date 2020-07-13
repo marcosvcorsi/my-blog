@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   PostItemWrapper,
@@ -10,19 +11,39 @@ import {
   PostItemDescription,
 } from './styles';
 
-const PostItem = () => {
+const PostItem = ({
+  slug,
+  background,
+  category,
+  date,
+  timeToRead,
+  title,
+  description,
+}) => {
   return (
-    <PostItemLink to="/slug">
+    <PostItemLink to={slug}>
       <PostItemWrapper>
-        <PostItemTag background="#47650b">Misc</PostItemTag>
+        <PostItemTag background={background}>{category}</PostItemTag>
         <PostItemInfo>
-          <PostItemDate>30 de Julho de 2020 - 4 min de leitura</PostItemDate>
-          <PostItemTitle>Diga não ao Teste</PostItemTitle>
-          <PostItemDescription>Teste</PostItemDescription>
+          <PostItemDate>
+            {date} - {timeToRead} min de leitura
+          </PostItemDate>
+          <PostItemTitle>{title}</PostItemTitle>
+          <PostItemDescription>{description}</PostItemDescription>
         </PostItemInfo>
       </PostItemWrapper>
     </PostItemLink>
   );
+};
+
+PostItem.propTypes = {
+  slug: PropTypes.string.isRequired,
+  background: PropTypes.string,
+  category: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  timeToRead: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 export default PostItem;
