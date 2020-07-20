@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Marcos Vinicius Corsi`,
-    position: "Software Engineer",
+    position: 'Software Engineer',
     description: `A blog about develpoment and other cool stuff.`,
     author: `@mvcorsi`,
   },
@@ -13,6 +13,23 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/posts`,
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        commonmark: true,
+        footnotes: true,
+        pedantic: true,
+        gfm: true,
+        plugins: [],
       },
     },
     `gatsby-transformer-sharp`,
@@ -33,4 +50,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
